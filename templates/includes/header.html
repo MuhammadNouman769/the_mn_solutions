@@ -10,40 +10,82 @@
 
 <style>
 
-/* ================= HEADER ================= */
+/* ================= NEW HEADER DESIGN ================= */
+:root {
+  --primary: #0ebab1;
+  --primary-dark: #0ebab1;
+  --primary-light: #0ebab1;
+  --accent: #0faf7a;
+  --accent-glow: rgba(6, 212, 178, 0.4);
+  --dark: #0f172a;
+  --dark-2: #1e293b;
+  --gray: #000000;
+  --light: #f8fafc;
+  --white: #ffffff;
+  --gradient: linear-gradient(135deg, #0ebab1 0%, #0ebab1 100%);
+  --gradient-hover: linear-gradient(135deg, #0ebab1 0%, #0ebab1 100%);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--light);
+}
+
+/* ================= HEADER SHELL ================= */
 .btr-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  transition: 0.3s ease;
+  padding: 0 20px;
+  transition: all 0.4s var(--transition);
 }
 
-.btr-header.is-sticky {
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-  background: rgba(255,255,255,0.97);
-}
-
-/* ================= CONTAINER ================= */
-.btr-header__container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 14px 22px;
+.btr-header__inner {
+  max-width: 1440px;
+  margin: 16px auto;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 20px;
+  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 72px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.4s var(--transition);
+  position: relative;
+  gap: 16px;
 }
 
-/* ================= LOGO SWITCH ================= */
+.btr-header.is-sticky .btr-header__inner {
+  margin-top: 8px;
+  height: 64px;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+
+/* ================= LOGO ================= */
 .btr-logo-switch {
   position: relative;
   display: block;
-  width: 160px;
-  height: 50px;
+  width: 130px;
+  height: 42px;
+  flex-shrink: 0;
 }
 
 .btr-logo-default,
@@ -54,326 +96,144 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: .35s ease;
+  transition: all 0.4s var(--transition);
 }
 
 .btr-logo-default {
-  opacity: 5;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .btr-logo-hover {
   opacity: 0;
+  transform: scale(0.9);
 }
 
 .btr-logo-switch:hover .btr-logo-default {
   opacity: 0;
+  transform: scale(0.9);
 }
 
 .btr-logo-switch:hover .btr-logo-hover {
   opacity: 1;
+  transform: scale(1);
 }
 
 /* ================= NAV ================= */
-.btr-nav{
-    display:flex;
-    align-items:center;
+.btr-nav {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
 }
 
-.btr-nav__list{
-    display:flex;
-    gap:26px;
-    list-style:none;
-    margin:0;
-    padding:0;
-    align-items:center;
+.btr-nav__list {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
-.btr-nav__link{
-    position:relative;
-    display:inline-block;
-    padding:0px 0;
-    font-size:13px;
-    font-weight:700;
-    font-family:'Poppins',sans-serif;
-    font-variant:petite-caps;
-    color: #1f2937;
-    text-decoration:none;
-    transition:.3s;
-}
-
-.btr-nav__link:hover{
-    color:#0ebab1;
-}
-
-.btr-nav__link.active{
-    color:#0ebab1;
-}
-
-.btr-nav__link::after{
-    content:"";
-    position:absolute;
-    left:50%;
-    bottom:-8px;
-    width:0;
-    height:3px;
-    background:#14c8c9;
-    border-radius:50px;
-    transform:translateX(-50%);
-    transition:.3s;
-}
-
-.btr-nav__link:hover::after{
-    width:100%;
-}
-
-.btr-nav__link.active::after{
-    width:100%;
-    box-shadow:0 0 12px rgba(20,200,201,.45);
-}
-
-/* ================= DROPDOWN ================= */
-.btr-nav__dropdown {
+.btr-nav__item {
   position: relative;
 }
 
-.btr-dropdown {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  min-width: 220px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-  padding: 10px 0;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: 0.25s ease;
-}
-
-.btr-nav__dropdown:hover .btr-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.btr-dropdown__item {
-  padding: 10px 16px;
-}
-
-.btr-dropdown__link {
-  font-size: 14px;
-  color: #374151;
-  text-decoration: none;
-  display: block;
-  transition: 0.2s;
-}
-
-.btr-dropdown__link:hover {
-  color: #0ebab1;
-  padding-left: 6px;
-}
-
-/* ================= MENU ICON ================= */
-.btr-menu {
-  font-size: 26px;
-  cursor: pointer;
-  user-select: none;
-}
-
-/* ================= SIDEBAR ================= */
-.btr-sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.3s ease;
-  z-index: 2000;
-}
-
-.btr-sidebar__overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.55);
-}
-
-.btr-sidebar__panel {
-  position: absolute;
-  right: -420px;
-  top: 0;
-  width: 380px;
-  height: 100%;
-  background: rgb(50, 47, 47);
-  color: #fff;
-  padding: 25px;
-  transition: 0.35s ease;
-  overflow-y: auto;
-}
-
-.btr-sidebar.active {
-  visibility: visible;
-  opacity: 1;
-}
-
-.btr-sidebar.active .btr-sidebar__panel {
-  right: 0;
-}
-
-.btr-sidebar__panel {
-  position: absolute;
-  right: -420px;
-  top: 0;
-  width: 280px;
-  height: 100%;
-  background: #0a0f1c;
-  color: #fff;
-  padding: 20px;
-  transition: 0.35s ease;
-  overflow-y: auto;
-}
-
-.btr-sidebar.active .btr-sidebar__panel {
-  right: 0;
-}
-
-/* SIDEBAR HEADER */
-.tf-sb-header {
-  display: flex;
+.btr-nav__link {
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-}
-
-.tf-sb-header .btr-logo-switch {
-  width: 120px;
-  height: 40px;
-}
-
-.tf-close {
-  margin-left: auto;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-/* SIDEBAR SECTIONS */
-.tf-section {
-  margin-top: 18px;
-}
-
-.tf-section h4 {
-  font-size: 12px;
-  color: #0ebab1;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-}
-
-.tf-section p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #cbd5e1;
-}
-
-.tf-info {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-  align-items: flex-start;
-}
-
-.tf-info p {
-  font-size: 15px;
-  color: #cbd5e1;
-  margin: 0;
-}
-
-.tf-link {
-  display: block;
-  padding: 8px 0;
-  color: #cbd5e1;
+  gap: 4px;
+  padding: 9px 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark-2);
   text-decoration: none;
-  font-size: 13px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  transition: 0.2s;
+  border-radius: 10px;
+  transition: all 0.3s var(--transition);
+  white-space: nowrap;
 }
 
-.tf-link:hover {
-  color: #0ebab1;
-  padding-left: 6px;
+.btr-nav__link:hover {
+  color: var(--primary);
+  background: rgba(14, 186, 177, 0.06);
 }
 
-/* SIDEBAR SOCIAL */
-.tf-social-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 18px;
+.btr-nav__link.active {
+  color: var(--primary);
+  background: rgba(14, 186, 177, 0.08);
 }
 
-.tf-social-link {
-  width: 44px;
-  height: 44px;
-  border: 2px solid #0ebab1;
-  border-radius: 50%;
-  display: flex;
+/* When parent is open, highlight the link */
+.btrx-mega-parent.is-open > .btr-nav__link {
+  color: var(--primary);
+  background: rgba(14, 186, 177, 0.08);
+}
+
+.btr-nav__link::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient);
+  border-radius: 50px;
+  transform: translateX(-50%);
+  transition: width 0.3s var(--transition);
+}
+
+.btr-nav__link:hover::after {
+  width: 24px;
+}
+
+.btr-nav__link.active::after {
+  width: 24px;
+}
+
+.btrx-mega-parent.is-open > .btr-nav__link::after {
+  width: 24px;
+}
+
+/* ================= CHEVRON ICON ================= */
+.btr-nav__chevron {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #79808a;
-  transition: 0.3s;
+  width: 12px;
+  height: 12px;
+  transition: transform 0.3s var(--transition);
+  flex-shrink: 0;
 }
 
-.tf-social-link svg {
-  width: 18px;
-  height: 18px;
-  color: #79808a;
+.btr-nav__chevron svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.tf-social-link:hover {
-  background: #0ebab1;
-  border: 2px solid #0ebab1;
+/* Rotate chevron when parent is open */
+.btrx-mega-parent.is-open .btr-nav__chevron {
+  transform: rotate(180deg);
 }
 
-.tf-social-link:hover svg {
-  color: #fff;
+/* Rotate chevron on hover too */
+.btrx-mega-parent:hover .btr-nav__chevron {
+  transform: rotate(180deg);
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-  .btr-nav__list {
-    display: none;
-  }
+.btrx-mega-parent.is-open:hover .btr-nav__chevron {
+  transform: rotate(180deg);
 }
 
-.btr-menu {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid rgba(0,0,0,.08);
-  color: #0ebab1;
-  background: #79808A;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.btr-menu:hover {
-  background: #0ebab1;
-  color: #79808A;
-  transform: rotate(90deg);
-}
-
-/* ================= MEGA MENU PARENT ================= */
+/* ================= MEGA MENU ================= */
 .btrx-mega-parent {
   position: static;
 }
@@ -381,54 +241,78 @@
 .btrx-mega-menu {
   position: absolute;
   left: 0;
-  top: 100%;
+  top: calc(100% + 12px);
   width: 100%;
-  background: #fff;
-  padding: 30px 60px;
-  box-shadow: 0 20px 50px rgba(0,0,0,.08);
+  background: #ffffff;
+  padding: 36px 48px;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04);
   display: flex;
   justify-content: space-between;
-  gap: 40px;
+  gap: 48px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(15px);
-  transition: .3s ease;
+  transform: translateY(12px) scale(0.98);
+  transition: all 0.35s var(--transition);
   z-index: 9999;
-  max-height: 80vh;
+  max-height: 75vh;
   overflow-y: auto;
+  pointer-events: none;
 }
 
-.btrx-mega-parent:hover .btrx-mega-menu {
+/* ✅ ONLY OPEN via .is-open class (JS controlled) */
+.btrx-mega-parent.is-open .btrx-mega-menu {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Custom scrollbar for mega menu */
+.btrx-mega-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.btrx-mega-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.btrx-mega-menu::-webkit-scrollbar-thumb {
+  background: rgba(14, 186, 177, 0.2);
+  border-radius: 10px;
+}
+
+.btrx-mega-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 186, 177, 0.4);
 }
 
 .btrx-mega-left {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: 32px 40px;
 }
 
 .btrx-mega-col h4 {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  color: #16213e;
-  margin-bottom: 12px;
+  color: var(--dark);
+  margin-bottom: 14px;
   position: relative;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.btrx-mega-col h4:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 40px;
-  height: 2px;
-  background: #0ebab1;
+.btrx-mega-col h4::before {
+  content: '';
+  width: 3px;
+  height: 14px;
+  background: var(--gradient);
+  border-radius: 10px;
+  flex-shrink: 0;
 }
 
 .btrx-mega-links {
@@ -438,41 +322,65 @@
 }
 
 .btrx-mega-links li {
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 }
 
 .btrx-mega-links a {
   text-decoration: none;
-  color:rgb(0, 0, 0);
-  font-size: 13px!important;
+  color: var(--gray);
+  font-size: 12.5px;
   font-weight: 500;
-  transition: .25s;
-  display: block;
-  padding: 2px 0;
+  transition: all 0.25s var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border-radius: 8px;
   line-height: 1.4;
 }
 
-.btrx-mega-links a:hover {
-  color: #0ebab1;
-  padding-left: 6px;
+.btrx-mega-links a::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  opacity: 0;
+  transition: all 0.25s var(--transition);
+  flex-shrink: 0;
+  margin-left: -8px;
 }
 
+.btrx-mega-links a:hover {
+  color: var(--primary);
+  background: rgba(14, 186, 177, 0.06);
+  padding-left: 16px;
+}
+
+.btrx-mega-links a:hover::before {
+  opacity: 1;
+  margin-left: 0;
+}
+
+/* Mega Menu Right Panel */
 .btrx-mega-right {
   width: 280px;
-  padding-left: 30px;
-  border-left: 1px solid #e5e7eb;
+  padding-left: 36px;
+  border-left: 1px solid rgba(0,0,0,0.06);
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .btrx-company-logo {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 .btrx-brand-switch {
   position: relative;
   display: block;
-  width: 200px;
-  height: 60px;
+  width: 160px;
+  height: 50px;
 }
 
 .btrx-brand-default,
@@ -483,7 +391,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: .35s ease;
+  transition: all 0.4s var(--transition);
 }
 
 .btrx-brand-default {
@@ -503,38 +411,58 @@
 }
 
 .btrx-company-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  color: #111827;
+  color: var(--dark);
   margin-bottom: 10px;
   line-height: 1.3;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .btrx-company-desc {
-  font-size: 13px;
-  line-height: 1.6;
-  color: #6b7280;
-  margin-bottom: 15px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--gray);
+  margin-bottom: 18px;
+  flex: 1;
 }
 
 .btrx-company-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #0ebab1;
-  color: #fff;
-  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: var(--gradient);
+  color: var(--white);
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 13px;
-  transition: 0.3s;
+  font-size: 12.5px;
+  transition: all 0.35s var(--transition);
+  box-shadow: 0 4px 15px rgba(14, 186, 177, 0.3);
+  align-self: flex-start;
 }
 
 .btrx-company-btn:hover {
-  background: #099488;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(14, 186, 177, 0.4);
 }
 
+.btrx-company-btn::after {
+  content: '→';
+  transition: transform 0.3s var(--transition);
+}
+
+.btrx-company-btn:hover::after {
+  transform: translateX(4px);
+}
+
+/* Stats */
 .btrx-about-stats {
-  margin-top: 15px;
+  margin-top: 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
@@ -542,54 +470,67 @@
 
 .btrx-about-stat {
   text-align: center;
-  padding: 10px 8px;
-  background: #f8fafc;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  padding: 12px 8px;
+  background: linear-gradient(135deg, rgba(14,186,177,0.04), rgba(14,186,177,0.02));
+  border-radius: 12px;
+  border: 1px solid rgba(14, 186, 177, 0.08);
+  transition: all 0.3s var(--transition);
+}
+
+.btrx-about-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(14, 186, 177, 0.1);
 }
 
 .btrx-about-stat h5 {
   margin: 0;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
-  color: #0ebab1;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .btrx-about-stat span {
   display: block;
   margin-top: 3px;
-  font-size: 11px;
-  color: #6b7280;
+  font-size: 10px;
+  color: var(--gray);
+  font-weight: 500;
 }
 
+/* Case Highlight */
 .btrx-case-highlight {
-  margin: 10px 0;
-  padding: 12px;
-  background: #f8fafc;
-  border-left: 4px solid #0ebab1;
-  border-radius: 8px;
+  margin: 12px 0;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(14,186,177,0.04), rgba(14,186,177,0.02));
+  border-radius: 12px;
+  border-left: 3px solid var(--primary);
 }
 
 .btrx-case-highlight strong {
   display: block;
-  color: #111827;
-  margin-bottom: 5px;
-  font-size: 13px;
+  color: var(--dark);
+  margin-bottom: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
 }
 
 .btrx-case-highlight p {
   margin: 0;
-  color: #6b7280;
+  color: var(--gray);
   font-size: 12px;
   line-height: 1.6;
 }
 
+/* Contact Rows */
 .btrx-contact-row {
   display: flex;
   align-items: flex-start;
   gap: 10px;
   margin-top: 10px;
-  color: #4b5563;
+  color: var(--gray);
   font-size: 12px;
   line-height: 1.5;
 }
@@ -597,8 +538,8 @@
 .btrx-contact-row i {
   width: 16px;
   margin-top: 2px;
-  color: #0ebab1;
-  font-size: 14px;
+  color: var(--primary);
+  font-size: 13px;
   flex-shrink: 0;
 }
 
@@ -606,100 +547,395 @@
   flex: 1;
 }
 
-/* ================= SERVICES MEGA MENU SPECIAL ================= */
+/* ================= SERVICES MEGA MENU ================= */
 .btrx-mega-menu.services-menu .btrx-mega-left {
   grid-template-columns: repeat(4, 1fr);
 }
 
 .btrx-mega-menu.services-menu .btrx-mega-col h4 {
-  font-size: 12px;
-  margin-bottom: 10px;
+  font-size: 11px;
+  margin-bottom: 12px;
 }
 
 .btrx-mega-menu.services-menu .btrx-mega-links a {
-  font-size: 11px;
-  padding: 1px 0;
-  line-height: 1.3;
-}
-
-.btrx-mega-menu.services-menu .btrx-mega-links li {
-  margin-bottom: 4px;
+  font-size: 11.5px;
+  padding: 4px 8px;
 }
 
 .btrx-mega-menu.services-menu .btrx-mega-right {
-  width: 240px;
-  padding-left: 25px;
+  width: 250px;
+  padding-left: 30px;
 }
 
-.btrx-mega-menu.services-menu .btrx-company-title {
-  font-size: 18px;
-}
-
-.btrx-mega-menu.services-menu .btrx-company-desc {
-  font-size: 12px;
-}
-
-/* ================= AI MEGA MENU SPECIAL ================= */
+/* ================= AI MEGA MENU ================= */
 .btrx-mega-menu.ai-menu .btrx-mega-left {
   grid-template-columns: repeat(4, 1fr);
 }
 
 .btrx-mega-menu.ai-menu .btrx-mega-col h4 {
-  font-size: 12px;
-  margin-bottom: 10px;
+  font-size: 11px;
+  margin-bottom: 12px;
 }
 
 .btrx-mega-menu.ai-menu .btrx-mega-links a {
-  font-size: 11px;
-  padding: 1px 0;
-  line-height: 1.3;
-}
-
-.btrx-mega-menu.ai-menu .btrx-mega-links li {
-  margin-bottom: 4px;
+  font-size: 11.5px;
+  padding: 4px 8px;
 }
 
 .btrx-mega-menu.ai-menu .btrx-mega-right {
-  width: 240px;
-  padding-left: 25px;
+  width: 250px;
+  padding-left: 30px;
 }
 
-.btrx-mega-menu.ai-menu .btrx-company-title {
-  font-size: 18px;
+/* ================= MENU BUTTON ================= */
+.btr-menu {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  border: none;
+  background: var(--gradient);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.35s var(--transition);
+  box-shadow: 0 4px 15px rgba(14, 186, 177, 0.3);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.btrx-mega-menu.ai-menu .btrx-company-desc {
-  font-size: 12px;
+.btr-menu::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-hover);
+  opacity: 0;
+  transition: opacity 0.3s var(--transition);
+}
+
+.btr-menu:hover::before {
+  opacity: 1;
+}
+
+.btr-menu:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(14, 186, 177, 0.45);
+}
+
+.btr-menu:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btr-menu svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s var(--transition);
+}
+
+.btr-menu:hover svg {
+  transform: rotate(90deg);
+}
+
+/* ================= SIDEBAR ================= */
+.btr-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s var(--transition);
+  z-index: 2000;
+}
+
+.btr-sidebar__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.btr-sidebar__panel {
+  position: absolute;
+  right: -460px;
+  top: 0;
+  width: 420px;
+  height: 100%;
+  background: var(--dark);
+  color: var(--white);
+  padding: 0;
+  transition: right 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(255,255,255,0.06);
+}
+
+.btr-sidebar__panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.btr-sidebar__panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.btr-sidebar__panel::-webkit-scrollbar-thumb {
+  background: rgba(14, 186, 177, 0.3);
+  border-radius: 10px;
+}
+
+.btr-sidebar.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.btr-sidebar.active .btr-sidebar__panel {
+  right: 0;
+}
+
+/* Sidebar Header */
+.tf-sb-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(20px);
+}
+
+.tf-sb-header .btr-logo-switch {
+  width: 130px;
+  height: 42px;
+}
+
+.tf-close {
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--transition);
+  line-height: 1;
+}
+
+.tf-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  transform: rotate(90deg);
+}
+
+/* Sidebar Sections */
+.tf-section {
+  padding: 0 28px;
+  margin-top: 28px;
+}
+
+.tf-section:last-child {
+  padding-bottom: 28px;
+}
+
+.tf-section h4 {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tf-section h4::before {
+  content: '';
+  width: 3px;
+  height: 14px;
+  background: var(--gradient);
+  border-radius: 10px;
+}
+
+.tf-section p {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.tf-info {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  align-items: flex-start;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.3s var(--transition);
+}
+
+.tf-info:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(14, 186, 177, 0.15);
+}
+
+.tf-info p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Sidebar Links */
+.tf-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: all 0.3s var(--transition);
+  margin-bottom: 4px;
+  border: 1px solid transparent;
+}
+
+.tf-link::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(14, 186, 177, 0.4);
+  flex-shrink: 0;
+  transition: all 0.3s var(--transition);
+}
+
+.tf-link:hover {
+  color: var(--white);
+  background: rgba(14, 186, 177, 0.08);
+  border-color: rgba(14, 186, 177, 0.15);
+  padding-left: 20px;
+}
+
+.tf-link:hover::before {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Sidebar Social */
+.tf-social-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.tf-social-link {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.35s var(--transition);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tf-social-link svg {
+  width: 18px;
+  height: 18px;
+  transition: all 0.3s var(--transition);
+}
+
+.tf-social-link:hover {
+  background: var(--gradient);
+  border-color: transparent;
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(14, 186, 177, 0.35);
+}
+
+.tf-social-link:hover svg {
+  color: var(--white);
+  transform: scale(1.1);
 }
 
 /* ================= RESPONSIVE ================= */
-@media(max-width: 1200px) {
+@media (max-width: 1400px) {
+  .btr-nav__link {
+    padding: 8px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .btr-header__inner {
+    padding: 0 16px;
+  }
+  
+  .btr-nav__link {
+    padding: 7px 7px;
+    font-size: 11.5px;
+  }
+  
   .btrx-mega-menu {
-    padding: 25px 35px;
+    padding: 28px 32px;
+    gap: 32px;
   }
   
   .btrx-mega-left {
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 24px 28px;
   }
   
-  .btrx-mega-menu.services-menu .btrx-mega-left {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
+  .btrx-mega-menu.services-menu .btrx-mega-left,
   .btrx-mega-menu.ai-menu .btrx-mega-left {
     grid-template-columns: repeat(3, 1fr);
   }
   
   .btrx-mega-right {
-    width: 220px;
-    padding-left: 20px;
+    width: 230px;
+    padding-left: 28px;
   }
 }
 
-@media(max-width: 992px) {
+@media (max-width: 992px) {
+  .btr-header {
+    padding: 0 16px;
+  }
+  
+  .btr-header__inner {
+    padding: 0 20px;
+    height: 64px;
+    border-radius: 16px;
+  }
+  
+  .btr-nav__list {
+    display: none;
+  }
+  
   .btrx-mega-menu {
-    padding: 20px 25px;
+    padding: 24px;
+    gap: 24px;
   }
   
   .btrx-mega-left {
@@ -707,10 +943,7 @@
     gap: 20px;
   }
   
-  .btrx-mega-menu.services-menu .btrx-mega-left {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
+  .btrx-mega-menu.services-menu .btrx-mega-left,
   .btrx-mega-menu.ai-menu .btrx-mega-left {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -718,27 +951,69 @@
   .btrx-mega-right {
     display: none;
   }
-}
-
-@media(max-width: 768px) {
-  .btrx-mega-menu {
-    display: none;
+  
+  .btr-sidebar__panel {
+    width: 100%;
+    right: -100%;
   }
 }
 
-@media(max-width: 480px) {
-  .btr-header__container {
-    padding: 10px 15px;
+@media (max-width: 768px) {
+  .btr-header {
+    padding: 0 12px;
+  }
+  
+  .btr-header__inner {
+    margin: 10px auto;
+    padding: 0 16px;
+    height: 60px;
+    border-radius: 14px;
+  }
+  
+  .btrx-mega-menu {
+    display: none;
   }
   
   .btr-logo-switch {
-    width: 120px;
-    height: 40px;
+    width: 110px;
+    height: 36px;
   }
   
   .btr-menu {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btr-header__inner {
+    padding: 0 14px;
+    height: 56px;
+  }
+  
+  .btr-logo-switch {
+    width: 100px;
+    height: 32px;
+  }
+  
+  .btr-menu {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  
+  .btr-menu svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .tf-section {
+    padding: 0 20px;
+  }
+  
+  .tf-sb-header {
+    padding: 20px;
   }
 }
 
@@ -748,9 +1023,9 @@
 <body>
 
 <!-- ================= HEADER ================= -->
-<header class="btr-header">
+<header class="btr-header" id="btrHeader">
 
-  <div class="btr-header__container">
+  <div class="btr-header__inner">
 
     <!-- LOGO -->
     <a href="{% url 'home' %}" class="btr-logo-switch">
@@ -763,14 +1038,17 @@
       <ul class="btr-nav__list">
 
         <!-- HOME -->
-        <li>
+        <li class="btr-nav__item">
           <a class="btr-nav__link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
         </li>
 
         <!-- ABOUT -->
         <li class="btrx-mega-parent">
-          <a href="{% url 'about-us' %}" class="btr-nav__link {% if request.resolver_match.url_name == 'about-us' or request.resolver_match.url_name == 'why_choose_us' %}active{% endif %}">
+          <a href="{% url 'about-us' %}" class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'about-us' or request.resolver_match.url_name == 'why_choose_us' %}active{% endif %}">
             About
+            <span class="btr-nav__chevron">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </a>
           <div class="btrx-mega-menu">
             <div class="btrx-mega-left">
@@ -834,8 +1112,11 @@
 
         <!-- SERVICES -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="#">
+          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="#">
             Services
+            <span class="btr-nav__chevron">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </a>
           <div class="btrx-mega-menu services-menu">
             <div class="btrx-mega-left">
@@ -888,11 +1169,11 @@
                 </ul>
               </div>
 
-              <!-- Column 5: Logo.pngnovation -->
+              <!-- Column 5: Innovation -->
               <div class="btrx-mega-col">
-                <h4>Logo.pngnovation</h4>
+                <h4>Innovation</h4>
                 <ul class="btrx-mega-links">
-                  <li><a href="{% url 'coming' %}">Logo.pngnovation</a></li>
+                  <li><a href="{% url 'coming' %}">Innovation</a></li>
                   <li><a href="{% url 'coming' %}">Design Thinking</a></li>
                   <li><a href="{% url 'coming' %}">Product Strategy</a></li>
                   <li><a href="{% url 'coming' %}">MVP Development</a></li>
@@ -999,10 +1280,13 @@
           </div>
         </li>
 
-        <!-- ARTIFICIAL INTELLIGENCE - NEW SECTION -->
+        <!-- ARTIFICIAL INTELLIGENCE -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link {% if request.resolver_match.url_name == 'ai' %}active{% endif %}" href="#">
+          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'ai' %}active{% endif %}" href="#">
             Artificial Intelligence
+            <span class="btr-nav__chevron">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </a>
           <div class="btrx-mega-menu ai-menu">
             <div class="btrx-mega-left">
@@ -1087,8 +1371,11 @@
 
         <!-- SOLUTIONS -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link {% if request.resolver_match.url_name == 'solutions' %}active{% endif %}" href="#!">
+          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'solutions' %}active{% endif %}" href="#!">
             Solutions
+            <span class="btr-nav__chevron">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </a>
           <div class="btrx-mega-menu">
             <div class="btrx-mega-left">
@@ -1143,8 +1430,11 @@
 
         <!-- INDUSTRIES -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link {% if request.resolver_match.url_name == 'industries' %}active{% endif %}" href="#!">
+          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'industries' %}active{% endif %}" href="#!">
             Industries
+            <span class="btr-nav__chevron">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </a>
           <div class="btrx-mega-menu">
             <div class="btrx-mega-left">
@@ -1200,8 +1490,11 @@
 
         <!-- OUR PRODUCTS -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link {% if request.resolver_match.url_name == 'products' %}active{% endif %}" href="#!">
+          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'products' %}active{% endif %}" href="#!">
             Our Products
+            <span class="btr-nav__chevron">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </a>
           <div class="btrx-mega-menu">
             <div class="btrx-mega-left">
@@ -1253,8 +1546,11 @@
 
         <!-- CASE STUDIES -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link {% if request.resolver_match.url_name == 'case_studies' %}active{% endif %}" href="{% url 'case_studies' %}">
+          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'case_studies' %}active{% endif %}" href="{% url 'case_studies' %}">
             Case Studies
+            <span class="btr-nav__chevron">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </a>
           <div class="btrx-mega-menu">
             <div class="btrx-mega-left">
@@ -1309,8 +1605,11 @@
 
         <!-- BLOGS -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link {% if request.resolver_match.url_name == 'blogs' %}active{% endif %}" href="{% url 'blogs' %}">
+          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'blogs' %}active{% endif %}" href="{% url 'blogs' %}">
             Blogs
+            <span class="btr-nav__chevron">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </a>
           <div class="btrx-mega-menu">
             <div class="btrx-mega-left">
@@ -1365,8 +1664,11 @@
 
         <!-- CONTACT US -->
         <li class="btrx-mega-parent">
-          <a class="btr-nav__link {% if request.resolver_match.url_name == 'contact_us' %}active{% endif %}" href="{% url 'contact_us' %}">
+          <a class="btr-nav__link has-mega {% if request.resolver_match.url_name == 'contact_us' %}active{% endif %}" href="{% url 'contact_us' %}">
             Contact Us
+            <span class="btr-nav__chevron">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
           </a>
           <div class="btrx-mega-menu">
             <div class="btrx-mega-left">
@@ -1430,12 +1732,12 @@
       </ul>
     </nav>
 
-    <!-- MENU ICON -->
-    <button class="btr-menu" id="btrMenuBtn">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M3 6H21" stroke="currentColor" stroke-width="2"/>
-        <path d="M3 12H21" stroke="currentColor" stroke-width="2"/>
-        <path d="M9 18H21" stroke="currentColor" stroke-width="2"/>
+    <!-- MENU BUTTON -->
+    <button class="btr-menu" id="btrMenuBtn" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M9 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </button>
 
@@ -1451,7 +1753,7 @@
         <img src="{% static 'images/logos/xvera.png' %}" class="btr-logo-default" alt="Logo">
         <img src="{% static 'images/logos/xvera.png' %}" class="btr-logo-hover" alt="Logo Hover">
       </a>
-      <button class="tf-close" id="btrClose">×</button>
+      <button class="tf-close" id="btrClose" aria-label="Close menu">×</button>
     </div>
     <div class="tf-section">
       <p>Welcome to Btr Solutions, where innovation meets passion to drive the digital future. We are not just an IT company; we are a force of technology enthusiasts dedicated to pushing boundaries and unlocking possibilities.</p>
@@ -1468,17 +1770,17 @@
         <p>+92 324 8699647</p>
       </div>
       <div class="tf-social-wrap">
-        <a href="https://www.linkedin.com/company/btr-solutions" target="_blank" class="tf-social-link">
+        <a href="https://www.linkedin.com/company/btr-solutions" target="_blank" class="tf-social-link" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M4.98 3.5C4.98 4.6 4.09 5.5 2.99 5.5S1 4.6 1 3.5 1.89 1.5 2.99 1.5s1.99.9 1.99 2zM1.2 8h3.6v12H1.2V8zm5.8 0h3.45v1.64h.05c.48-.91 1.65-1.87 3.4-1.87 3.63 0 4.3 2.39 4.3 5.5V20h-3.6v-5.9c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V20H7V8z"/>
           </svg>
         </a>
-        <a href="https://x.com/" target="_blank" class="tf-social-link">
+        <a href="https://x.com/" target="_blank" class="tf-social-link" aria-label="X">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.9 2H22l-6.8 7.8L23 22h-6.1l-4.8-6.3L6.6 22H3.5l7.3-8.3L1 2h6.2l4.3 5.7L18.9 2z"/>
           </svg>
         </a>
-        <a href="https://facebook.com/" target="_blank" class="tf-social-link">
+        <a href="https://facebook.com/" target="_blank" class="tf-social-link" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M22 12.07C22 6.51 17.52 2 12 2S2 6.51 2 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.77l-.44 2.91h-2.33V22C18.34 21.25 22 17.09 22 12.07z"/>
           </svg>
@@ -1500,22 +1802,140 @@
 
 <!-- ================= JS ================= -->
 <script>
-const sidebar = document.getElementById("btrSidebar");
-const openBtn = document.getElementById("btrMenuBtn");
-const closeBtn = document.getElementById("btrClose");
-const overlay = document.getElementById("btrOverlay");
+(function() {
+  'use strict';
 
-openBtn.addEventListener("click", () => {
-  sidebar.classList.add("active");
-});
+  var sidebar = document.getElementById("btrSidebar");
+  var openBtn = document.getElementById("btrMenuBtn");
+  var closeBtn = document.getElementById("btrClose");
+  var overlay = document.getElementById("btrOverlay");
+  var header = document.getElementById("btrHeader");
 
-closeBtn.addEventListener("click", () => {
-  sidebar.classList.remove("active");
-});
+  /* =========================================================
+     MEGA MENU — SIRF EK WAQT MEIN EK MENU OPEN
+     - Hover: pehla band, doosra open (turant)
+     - Click: menu stuck ho jata hai
+     - Click again: band
+     - Bahar click / Escape: sab band
+  ========================================================= */
+  var megaParents = document.querySelectorAll('.btrx-mega-parent');
 
-overlay.addEventListener("click", () => {
-  sidebar.classList.remove("active");
-});
+  function closeAllMega(except) {
+    megaParents.forEach(function(parent) {
+      if (parent !== except) {
+        parent.classList.remove('is-open');
+        parent.dataset.clicked = '';
+      }
+    });
+  }
+
+  megaParents.forEach(function(parent) {
+    var link = parent.querySelector('.btr-nav__link.has-mega');
+    if (!link) return;
+
+    /* ---------- HOVER: sirf ek menu show ho ---------- */
+    parent.addEventListener('mouseenter', function() {
+      // Agar koi menu clicked (stuck) hai to usay band kar do
+      megaParents.forEach(function(p) {
+        if (p !== parent && p.dataset.clicked === 'true') {
+          p.classList.remove('is-open');
+          p.dataset.clicked = '';
+        }
+      });
+
+      // Pehle sab band karo (except this one)
+      closeAllMega(parent);
+
+      // Ab ye open karo
+      parent.classList.add('is-open');
+    });
+
+    parent.addEventListener('mouseleave', function() {
+      // Agar ye clicked (stuck) nahi hai to band kar do
+      if (parent.dataset.clicked !== 'true') {
+        parent.classList.remove('is-open');
+      }
+    });
+
+    /* ---------- CLICK: stuck toggle ---------- */
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      var wasOpen = parent.classList.contains('is-open');
+      var wasClicked = parent.dataset.clicked === 'true';
+
+      // Sab band karo
+      closeAllMega(parent);
+
+      if (!wasOpen || !wasClicked) {
+        // Open + stuck
+        parent.classList.add('is-open');
+        parent.dataset.clicked = 'true';
+      } else {
+        // Already stuck open → close
+        parent.classList.remove('is-open');
+        parent.dataset.clicked = '';
+      }
+    });
+  });
+
+  /* Bahar click par sab band */
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.btrx-mega-parent')) {
+      megaParents.forEach(function(parent) {
+        parent.classList.remove('is-open');
+        parent.dataset.clicked = '';
+      });
+    }
+  });
+
+  /* Escape par sab band */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      megaParents.forEach(function(parent) {
+        parent.classList.remove('is-open');
+        parent.dataset.clicked = '';
+      });
+    }
+  });
+
+  /* =========================================================
+     SIDEBAR
+  ========================================================= */
+  openBtn.addEventListener("click", function() {
+    sidebar.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+
+  function closeSidebar() {
+    sidebar.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  closeBtn.addEventListener("click", closeSidebar);
+  overlay.addEventListener("click", closeSidebar);
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape" && sidebar.classList.contains("active")) {
+      closeSidebar();
+    }
+  });
+
+  /* =========================================================
+     STICKY HEADER
+  ========================================================= */
+  var lastScroll = 0;
+  window.addEventListener("scroll", function() {
+    var currentScroll = window.pageYOffset;
+    if (currentScroll > 50) {
+      header.classList.add("is-sticky");
+    } else {
+      header.classList.remove("is-sticky");
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+
+})();
 </script>
 
 </body>
