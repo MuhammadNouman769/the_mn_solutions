@@ -84,150 +84,373 @@
     /* ===== HERO WRAPPER ===== */
     .btr-hero-section {
         position: relative;
+        min-height: 760px;
         height: 100vh;
         overflow: hidden;
         display: flex;
         align-items: center;
+        background:
+            radial-gradient(circle at 18% 20%, rgba(66, 153, 225, 0.22), transparent 22%),
+            radial-gradient(circle at 72% 28%, rgba(45, 212, 191, 0.18), transparent 20%),
+            radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.12), transparent 24%),
+            linear-gradient(135deg, #020b14 0%, #061522 28%, #040d1b 60%, #01070f 100%);
     }
-    /* ===== VIDEO ===== */
-    .btr-hero-video {
+    .btr-hero-section::before {
+        content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 1;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
+        opacity: 0.7;
     }
-    /* ===== LEFT CLEAN OVERLAY ===== */
-    .btr-hero-overlay {
+    .btr-hero-section::after {
+        content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 55%;
-        height: 100%;
-        z-index: 2;
-        background: linear-gradient(to right, rgba(8, 10, 15, 0.95) 0%, rgba(8, 10, 15, 0.85) 60%, rgba(8, 10, 15, 0.40) 85%, rgba(8, 10, 15, 0.00) 100%);
-    }
-    /* ===== FLOATING SHAPES ===== */
-    .btr-hero-circle {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(15, 133, 125, 0.35);
-        backdrop-filter: blur(6px);
-        z-index: 2;
-        animation: btr-float 6s ease-in-out infinite;
-    }
-    .btr-hero-circle-1 {
-        width: 120px;
-        height: 120px;
-        top: 15%;
-        left: 5%;
-    }
-    .btr-hero-circle-2 {
-        width: 180px;
-        height: 180px;
-        bottom: 10%;
-        right: 8%;
-        animation-delay: 2s;
-    }
-    .btr-hero-circle-3 {
-        width: 90px;
-        height: 90px;
-        top: 70%;
-        left: 20%;
-        animation-delay: 4s;
-    }
-    @keyframes btr-float {
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-20px);
-        }
+        inset: 0;
+        background: radial-gradient(circle at center, transparent 58%, rgba(2, 6, 23, 0.72) 100%);
     }
     /* ===== CONTENT ===== */
     .btr-hero-container {
         position: relative;
-        z-index: 3;
+        z-index: 2;
         width: 100%;
         padding: 0 8%;
         color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 42px;
     }
-    /* TAG */
+    .btr-hero-copy {
+        max-width: 720px;
+        position: relative;
+        z-index: 1;
+    }
     .btr-hero-tag {
         display: inline-block;
-        padding: 8px 15px;
-        background: rgba(28, 97, 82, 0.15);
-        color: #0ebab1;
-        border-radius: 30px;
-        font-size: 13px;
-        margin-bottom: 15px;
+        padding: 9px 16px;
+        background: rgba(125, 211, 252, 0.08);
+        border: 1px solid rgba(125, 211, 252, 0.35);
+        color: #a5f3fc;
+        border-radius: 999px;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        box-shadow: 0 0 24px rgba(56, 189, 248, 0.16);
     }
-    /* HEADING */
     .btr-hero-title {
-        font-size: 50px;
-        line-height: 1.2;
+        font-size: 60px !important;
+        line-height: 0.9;
         margin-bottom: 20px;
-        font-weight: 800;
+        font-weight: 500;
+        word-break: keep-all;
+        max-width: 700px;
+        text-transform: uppercase;
     }
     .btr-hero-title span {
-        color: #0ebab1;
+        display: block;
+        color: #7ef6eb;
+        text-shadow: 0 0 28px rgba(126, 246, 235, 0.45);
     }
-    /* PARAGRAPH */
     .btr-hero-text {
-        max-width: 600px;
-        color: #fff;
-        font-weight: 400;
-        opacity: 0.85;
-        line-height: 1.6;
-        font-family: monospace;
-        margin-bottom: 25px;
+        max-width: 560px;
+        color: rgba(226, 232, 240, 0.8);
+        font-weight: 500;
+        line-height: 1.75;
+        margin-bottom: 32px;
+        font-size: 1.06rem;
     }
-    /* BUTTONS */
     .btr-hero-buttons {
         display: flex;
-        gap: 15px;
-        margin-bottom: 30px;
+        gap: 16px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
     }
     .btr-btn {
-        padding: 12px 22px;
-        border-radius: 30px;
+        padding: 15px 24px;
+        border-radius: 999px;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 800;
         display: inline-block;
+        transition: all 0.3s ease;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
     }
     .btr-btn-primary {
-        border: 1px solid #0ebab1;
-        color: #0ebab1;
+        border: 1px solid rgba(125, 211, 252, 0.7);
+        background: linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(45, 212, 191, 0.12));
+        color: #dffcff;
+        box-shadow: 0 0 28px rgba(34, 211, 238, 0.18);
+    }
+    .btr-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 36px rgba(34, 211, 238, 0.22);
     }
     .btr-btn-secondary {
-        border: 1px solid #0ebab1;
-        color: #0ebab1;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(15, 23, 42, 0.34);
+        color: #e2e8f0;
     }
-    /* STATS */
+    .btr-btn-secondary:hover {
+        transform: translateY(-2px);
+        border-color: rgba(126, 246, 235, 0.7);
+    }
     .btr-hero-stats {
         display: flex;
-        gap: 30px;
+        gap: 22px;
+        flex-wrap: wrap;
+    }
+    .btr-hero-stats div {
+        min-width: 130px;
+        padding: 14px 18px;
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.36);
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        backdrop-filter: blur(8px);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
     }
     .btr-hero-stats div b {
-        color: #0ebab1;
-        font-size: 22px;
+        color: #7ef6eb;
+        font-size: 21px;
         display: block;
+        margin-bottom: 3px;
     }
-    /* TYPING */
+    .btr-hero-stats div span {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    /* ===== 3D PLANET SCENE ===== */
+    .btr-hero-scene {
+        position: relative;
+        width: min(560px, 42vw);
+        height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1200px;
+    }
+    .btr-planet-holder {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        animation: btr-planet-float 9s ease-in-out infinite;
+    }
+    .btr-planet-core {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotateX(70deg) rotateY(-20deg);
+        border-radius: 50%;
+        background:
+            radial-gradient(circle at 35% 30%, rgba(255,255,255,0.9) 0%, rgba(167, 243, 208, 0.8) 8%, rgba(16, 185, 129, 0.9) 18%, rgba(14, 116, 144, 0.95) 42%, rgba(7, 26, 40, 1) 74%, rgba(2, 6, 23, 1) 100%);
+        box-shadow:
+            inset -28px -28px 40px rgba(3, 7, 18, 0.8),
+            inset 25px 18px 36px rgba(184, 255, 241, 0.25),
+            0 0 50px rgba(45, 212, 191, 0.35),
+            0 0 120px rgba(59, 130, 246, 0.18);
+    }
+    .btr-planet-core::before {
+        content: "";
+        position: absolute;
+        inset: 12% 18% 18% 12%;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(255,255,255,0.38), rgba(15, 118, 110, 0.08), transparent 70%);
+        transform: rotate(-18deg);
+    }
+    .btr-planet-core::after {
+        content: "";
+        position: absolute;
+        inset: 18% 12% 18% 18%;
+        border-radius: 45% 55% 50% 50%;
+        background: rgba(16, 25, 44, 0.12);
+        box-shadow: inset 0 0 18px rgba(255,255,255,0.12);
+    }
+    .btr-planet-ring {
+        position: absolute;
+        width: 470px;
+        height: 470px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotateX(72deg) rotateZ(18deg);
+        border-radius: 50%;
+        border: 2px solid rgba(125, 211, 252, 0.6);
+        box-shadow: 0 0 30px rgba(125, 211, 252, 0.2);
+    }
+    .btr-planet-ring::before,
+    .btr-planet-ring::after {
+        content: "";
+        position: absolute;
+        inset: 18% 16%;
+        border-radius: 50%;
+        border: 1px solid rgba(126, 246, 235, 0.35);
+    }
+    .btr-orbit {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) rotateX(75deg);
+        border: 1px solid rgba(125, 211, 252, 0.2);
+    }
+    .btr-orbit-1 {
+        width: 440px;
+        height: 440px;
+        animation: btr-spin 18s linear infinite;
+    }
+    .btr-orbit-2 {
+        width: 500px;
+        height: 500px;
+        border-color: rgba(126, 246, 235, 0.18);
+        animation: btr-spin-reverse 22s linear infinite;
+    }
+    .btr-orbit-3 {
+        width: 560px;
+        height: 560px;
+        border-color: rgba(167, 243, 208, 0.12);
+        animation: btr-spin 26s linear infinite;
+    }
+    .btr-planet-sat {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #ecfeff 0%, #7ef6eb 30%, #38bdf8 100%);
+        box-shadow: 0 0 18px rgba(126, 246, 235, 0.9);
+    }
+    .btr-sat-a {
+        top: 18%;
+        left: 58%;
+        animation: btr-sat-a 8s ease-in-out infinite;
+    }
+    .btr-sat-b {
+        right: 18%;
+        bottom: 24%;
+        width: 14px;
+        height: 14px;
+        animation: btr-sat-b 10s ease-in-out infinite;
+    }
+    .btr-floating-card {
+        position: absolute;
+        background: rgba(9, 15, 27, 0.52);
+        border: 1px solid rgba(125, 211, 252, 0.25);
+        box-shadow: 0 20px 45px rgba(2, 6, 23, 0.45);
+        backdrop-filter: blur(12px);
+        border-radius: 18px;
+        padding: 12px 16px;
+        color: #e2e8f0;
+        z-index: 3;
+    }
+    .btr-floating-card strong {
+        display: block;
+        font-size: 1.1rem;
+        color: #7ef6eb;
+        margin-bottom: 4px;
+    }
+    .btr-floating-card span {
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(191, 219, 254, 0.8);
+    }
+    .btr-floating-card-top {
+        top: 12%;
+        right: 2%;
+        transform: rotate(12deg);
+    }
+    .btr-floating-card-bottom {
+        left: 0;
+        bottom: 16%;
+        transform: rotate(-12deg);
+    }
+
+    @keyframes btr-planet-float {
+        0%, 100% { transform: translateY(0px) rotateZ(0deg); }
+        50% { transform: translateY(-18px) rotateZ(1.5deg); }
+    }
+    @keyframes btr-spin {
+        0% { transform: translate(-50%, -50%) rotateX(75deg) rotateY(0deg) rotateZ(0deg); }
+        100% { transform: translate(-50%, -50%) rotateX(75deg) rotateY(360deg) rotateZ(360deg); }
+    }
+    @keyframes btr-spin-reverse {
+        0% { transform: translate(-50%, -50%) rotateX(75deg) rotateY(0deg) rotateZ(0deg); }
+        100% { transform: translate(-50%, -50%) rotateX(75deg) rotateY(-360deg) rotateZ(-360deg); }
+    }
+    @keyframes btr-sat-a {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-14px) scale(1.1); }
+    }
+    @keyframes btr-sat-b {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(14px) scale(1.12); }
+    }
     .btr-hero-typing {
-        color: #00ffd5;
+        color: #7ef6eb;
     }
-    /* RESPONSIVE */
+
+    @media(max-width: 980px) {
+        .btr-hero-container {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 120px;
+        }
+        .btr-hero-scene {
+            width: min(500px, 84vw);
+            height: 420px;
+        }
+        .btr-planet-core {
+            width: 280px;
+            height: 280px;
+        }
+        .btr-planet-ring {
+            width: 370px;
+            height: 370px;
+        }
+        .btr-orbit-1 { width: 340px; height: 340px; }
+        .btr-orbit-2 { width: 400px; height: 400px; }
+        .btr-orbit-3 { width: 460px; height: 460px; }
+    }
     @media(max-width:768px) {
+        .btr-hero-section {
+            min-height: 700px;
+        }
         .btr-hero-title {
-            font-size: 32px;
+            font-size: 2.7rem;
+            line-height: 1;
         }
         .btr-hero-stats {
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
+        }
+        .btr-hero-scene {
+            width: min(430px, 90vw);
+            height: 320px;
+        }
+        .btr-planet-core {
+            width: 220px;
+            height: 220px;
+        }
+        .btr-planet-ring {
+            width: 290px;
+            height: 290px;
+        }
+        .btr-orbit-1 { width: 260px; height: 260px; }
+        .btr-orbit-2 { width: 310px; height: 310px; }
+        .btr-orbit-3 { width: 360px; height: 360px; }
+        .btr-floating-card {
+            transform: none;
         }
     }
     /* ================================================
@@ -1457,33 +1680,48 @@
     }
 </style>
 <!-- ================================================
-   HERO SECTION (UNCHANGED)
+   HERO SECTION - 3D FUTURISTIC PLANET BANNER
    ================================================ -->
 <section class="btr-hero-section">
-    <video autoplay muted loop playsinline class="btr-hero-video">
-        <source src="{% static 'images/banner/banner-1.mp4' %}" type="video/mp4">
-    </video>
-    <div class="btr-hero-overlay"></div>
-    <div class="btr-hero-circle btr-hero-circle-1"></div>
-    <div class="btr-hero-circle btr-hero-circle-2"></div>
-    <div class="btr-hero-circle btr-hero-circle-3"></div>
     <div class="btr-hero-container">
-        <span class="btr-hero-tag">Trusted by Global Enterprises</span>
-        <h1 class="btr-hero-title">
-            We Engineer <span class="btr-hero-typing"></span>
-        </h1>
-        <p class="btr-hero-text">
-            We design, build, and scale high-performance digital ecosystems —
-            enterprise-grade web apps, cloud systems, and intelligent software solutions.
-        </p>
-        <div class="btr-hero-buttons">
-            <a href="#" class="btr-btn btr-btn-primary">Start Project</a>
-            <a href="#services" class="btr-btn btr-btn-secondary">Explore Solutions</a>
+        <div class="btr-hero-copy">
+            <span class="btr-hero-tag">Future Systems</span>
+            <h1 class="btr-hero-title">
+                Building the future <span class="btr-hero-typing">of human potential.</span>
+            </h1>
+            <p class="btr-hero-text">
+                We build immersive digital experiences, AI-powered ecosystems, and high-performance technology platforms for brands ready to lead the future.
+            </p>
+            <div class="btr-hero-buttons">
+                <a href="#" class="btr-btn btr-btn-primary">Book a Demo</a>
+                <a href="#services" class="btr-btn btr-btn-secondary">Explore Solutions</a>
+            </div>
+            <div class="btr-hero-stats">
+                <div><b>AI</b><span>Driven</span></div>
+                <div><b>Cloud</b><span>Ready</span></div>
+                <div><b>3D</b><span>Vision</span></div>
+            </div>
         </div>
-        <div class="btr-hero-stats">
-            <div><b>120+</b><span>Projects</span></div>
-            <div><b>60+</b><span>Clients</span></div>
-            <div><b>5+</b><span>Years</span></div>
+
+        <div class="btr-hero-scene" aria-label="3D futuristic planet banner">
+            <div class="btr-planet-holder">
+                <div class="btr-orbit btr-orbit-1"></div>
+                <div class="btr-orbit btr-orbit-2"></div>
+                <div class="btr-orbit btr-orbit-3"></div>
+                <div class="btr-planet-ring"></div>
+                <div class="btr-planet-core"></div>
+                <div class="btr-planet-sat btr-sat-a"></div>
+                <div class="btr-planet-sat btr-sat-b"></div>
+            </div>
+
+            <div class="btr-floating-card btr-floating-card-top">
+                <strong>24/7</strong>
+                <span>Global Ops</span>
+            </div>
+            <div class="btr-floating-card btr-floating-card-bottom">
+                <strong>99.9%</strong>
+                <span>System Scale</span>
+            </div>
         </div>
     </div>
 </section>
@@ -2286,12 +2524,7 @@ HTML
 </section>
 <script>
     // ===== Typing Effect (HERO) =====
-    const btrTexts = [
-        "Scalable Web Apps",
-        "Enterprise Systems",
-        "Cloud Solutions",
-        "Digital Platforms"
-    ];
+
     let btrIndex = 0;
     let btrChar = 0;
     let btrDeleting = false;
