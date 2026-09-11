@@ -90,10 +90,11 @@
         display: flex;
         align-items: center;
         background:
-            radial-gradient(circle at 50% 40%, rgba(66, 58, 99, 0.6), transparent 18%),
-            radial-gradient(circle at 20% 25%, rgba(155, 124, 255, 0.22), transparent 20%),
-            radial-gradient(circle at 75% 28%, rgba(190, 240, 58, 0.12), transparent 18%),
-            linear-gradient(180deg, #050812 0%, #070d19 22%, #050a14 60%, #040910 100%);
+            radial-gradient(circle at 50% 32%, rgba(79, 70, 229, 0.42), transparent 16%),
+            radial-gradient(circle at 18% 26%, rgba(34, 211, 238, 0.18), transparent 20%),
+            radial-gradient(circle at 78% 28%, rgba(190, 240, 58, 0.14), transparent 18%),
+            radial-gradient(circle at 62% 60%, rgba(59, 130, 246, 0.12), transparent 24%),
+            linear-gradient(180deg, #040811 0%, #081220 26%, #050b16 58%, #021018 100%);
     }
     .btr-hero-section::before {
         content: "";
@@ -851,48 +852,140 @@
        ================================================ */
     .btr-testimonials-section {
         padding: 120px 0;
-        background: var(--btr-white);
+        background:
+            radial-gradient(circle at top left, rgba(14, 165, 233, 0.08), transparent 30%),
+            linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+    .btr-testimonials-shell {
+        position: relative;
+        overflow: hidden;
+        margin-top: 48px;
+        padding: 30px 0;
+    }
+    .btr-testimonials-shell::before,
+    .btr-testimonials-shell::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 120px;
+        z-index: 2;
+        pointer-events: none;
+    }
+    .btr-testimonials-shell::before {
+        left: 0;
+        background: linear-gradient(90deg, rgba(248,250,252,1) 0%, rgba(248,250,252,0) 100%);
+    }
+    .btr-testimonials-shell::after {
+        right: 0;
+        background: linear-gradient(270deg, rgba(248,250,252,1) 0%, rgba(248,250,252,0) 100%);
+    }
+    .btr-testimonials-track {
+        display: flex;
+        width: max-content;
+        gap: 26px;
+        animation: btr-testimonials-marquee 28s linear infinite;
+    }
+    .btr-testimonials-track:hover {
+        animation-play-state: paused;
     }
     .btr-testimonial-card {
-        padding: 50px 45px;
-        background: var(--btr-gray-light);
-        border-radius: var(--btr-radius);
+        width: 440px;
+        min-height: 320px;
+        padding: 28px 26px 22px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(248,250,252,0.96));
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        border-radius: 28px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
         position: relative;
-        transition: var(--btr-transition);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .btr-testimonial-card::before {
+        content: "";
+        position: absolute;
+        inset: -18% auto auto -12%;
+        width: 160px;
+        height: 160px;
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.18), transparent 70%);
+        filter: blur(16px);
+        z-index: 0;
+    }
+    .btr-testimonial-card > * {
+        position: relative;
+        z-index: 1;
     }
     .btr-testimonial-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--btr-shadow);
-    }
-    .btr-testimonial-quote {
-        margin-bottom: 20px;
-    }
-    .btr-testimonial-text {
-        font-size: 20px;
-        line-height: 1.8;
-        color: var(--btr-dark);
-        margin-bottom: 25px;
-        font-weight: 500;
+        transform: translateY(-8px) scale(1.01);
+        box-shadow: 0 28px 50px rgba(15, 23, 42, 0.12);
     }
     .btr-testimonial-author {
         display: flex;
         align-items: center;
         gap: 16px;
+        margin-bottom: 18px;
     }
     .btr-testimonial-avatar {
-        width: 60px;
-        height: 60px;
+        width: 82px;
+        height: 82px;
         border-radius: 50%;
         object-fit: cover;
+        object-position: center top;
+        box-shadow: 0 12px 24px rgba(14, 165, 233, 0.12);
+        border: 3px solid rgba(14, 165, 233, 0.08);
     }
     .btr-testimonial-name {
         font-size: 18px;
         font-weight: 700;
         color: var(--btr-dark);
+        margin-bottom: 4px;
     }
     .btr-testimonial-role {
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #64748b;
+    }
+    .btr-testimonial-quote {
+        margin-bottom: 18px;
+        color: #0ea5e9;
+        font-size: 2rem;
+        line-height: 1;
+    }
+    .btr-testimonial-text {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #334155;
+        margin-bottom: 20px;
+        font-weight: 500;
+    }
+    .btr-testimonial-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .btr-testimonial-company {
+        font-size: 12px;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+    }
+    .btr-testimonial-stars {
+        letter-spacing: 0.18em;
+        color: #f59e0b;
         font-size: 14px;
-        color: var(--btr-gray);
+    }
+    @keyframes btr-testimonials-marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    @media (max-width: 640px) {
+        .btr-testimonial-card {
+            width: 320px;
+        }
     }
     /* ================================================
        COUNTER SECTION - REDESIGNED
@@ -2516,27 +2609,141 @@ HTML
    ================================================ -->
 <section class="btr-testimonials-section btr-section-padding">
     <div class="btr-container">
-        <div class="btr-section-header" style="text-align:center;margin-bottom:60px;">
+        <div class="btr-section-header" style="text-align:center;margin-bottom:30px;">
             <span class="btr-section-badge">Client Testimonials</span>
             <h2 class="btr-section-title">What Our Partners Say</h2>
             <p class="btr-section-subtitle" style="margin:0 auto;">Real feedback from organizations we've helped transform through technology.</p>
         </div>
-        <div class="btr-testimonial-card" style="max-width:900px;margin:0 auto;">
-            <div class="btr-testimonial-quote">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <path d="M14 20H20V26H14V20ZM28 20H34V26H28V20ZM14 28H20V34H14V28ZM28 28H34V34H28V28Z" fill="#0ebab1" opacity="0.3"/>
-                    <path d="M14 14H20V20H14V14ZM28 14H34V20H28V14Z" fill="#0ebab1" opacity="0.15"/>
-                </svg>
-            </div>
-            <p class="btr-testimonial-text">
-                "BTR Solutions demonstrated deep technical expertise and a commitment to delivering results that exceeded our expectations. Their team's ability to understand our business needs and translate them into scalable digital solutions has been invaluable to our growth."
-            </p>
-            <div class="btr-testimonial-author">
-                <img class="btr-testimonial-avatar" src="{% static 'images/testimonial.png' %}" alt="David Smith" />
-                <div>
-                    <div class="btr-testimonial-name">David Smith</div>
-                    <div class="btr-testimonial-role">Founder & CEO, TechCorp</div>
-                </div>
+
+        <div class="btr-testimonials-shell">
+            <div class="btr-testimonials-track">
+                <article class="btr-testimonial-card">
+                    <div class="btr-testimonial-author">
+                        <img class="btr-testimonial-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="David Smith" />
+                        <div>
+                            <div class="btr-testimonial-name">David Smith</div>
+                            <div class="btr-testimonial-role">Founder & CEO</div>
+                        </div>
+                    </div>
+                    <div class="btr-testimonial-quote">“</div>
+                    <p class="btr-testimonial-text">BTR Solutions transformed our digital systems with precision and speed. Their team combined technical depth with an understanding of business strategy that made the whole rollout feel effortless.</p>
+                    <div class="btr-testimonial-meta">
+                        <span class="btr-testimonial-company">TechCorp</span>
+                        <span class="btr-testimonial-stars">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="btr-testimonial-card">
+                    <div class="btr-testimonial-author">
+                        <img class="btr-testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" alt="Aisha Khan" />
+                        <div>
+                            <div class="btr-testimonial-name">Aisha Khan</div>
+                            <div class="btr-testimonial-role">VP Operations</div>
+                        </div>
+                    </div>
+                    <div class="btr-testimonial-quote">“</div>
+                    <p class="btr-testimonial-text">We needed a partner who could understand enterprise complexity, and BTR delivered exactly that. Their execution quality, communication, and cloud expertise stood out from day one.</p>
+                    <div class="btr-testimonial-meta">
+                        <span class="btr-testimonial-company">NorthPeak</span>
+                        <span class="btr-testimonial-stars">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="btr-testimonial-card">
+                    <div class="btr-testimonial-author">
+                        <img class="btr-testimonial-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80" alt="Michael Gray" />
+                        <div>
+                            <div class="btr-testimonial-name">Michael Gray</div>
+                            <div class="btr-testimonial-role">Director of Product</div>
+                        </div>
+                    </div>
+                    <div class="btr-testimonial-quote">“</div>
+                    <p class="btr-testimonial-text">Their team brought clarity to a difficult migration and gave our product roadmap a strong technical foundation. The result was faster delivery and much better reliability.</p>
+                    <div class="btr-testimonial-meta">
+                        <span class="btr-testimonial-company">Luma Labs</span>
+                        <span class="btr-testimonial-stars">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="btr-testimonial-card">
+                    <div class="btr-testimonial-author">
+                        <img class="btr-testimonial-avatar" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=300&q=80" alt="Sonia Ahmed" />
+                        <div>
+                            <div class="btr-testimonial-name">Sonia Ahmed</div>
+                            <div class="btr-testimonial-role">COO</div>
+                        </div>
+                    </div>
+                    <div class="btr-testimonial-quote">“</div>
+                    <p class="btr-testimonial-text">From cloud architecture to automation, every solution felt custom-built for our goals. The team was proactive, responsive, and deeply invested in measurable outcomes.</p>
+                    <div class="btr-testimonial-meta">
+                        <span class="btr-testimonial-company">Vantage One</span>
+                        <span class="btr-testimonial-stars">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="btr-testimonial-card">
+                    <div class="btr-testimonial-author">
+                        <img class="btr-testimonial-avatar" src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=300&q=80" alt="Jason Park" />
+                        <div>
+                            <div class="btr-testimonial-name">Jason Park</div>
+                            <div class="btr-testimonial-role">Technology Lead</div>
+                        </div>
+                    </div>
+                    <div class="btr-testimonial-quote">“</div>
+                    <p class="btr-testimonial-text">BTR quickly understood our environment and made improvements that had a real impact on speed, scalability, and visibility. Their delivery model is efficient and highly reliable.</p>
+                    <div class="btr-testimonial-meta">
+                        <span class="btr-testimonial-company">OrbitGrid</span>
+                        <span class="btr-testimonial-stars">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="btr-testimonial-card">
+                    <div class="btr-testimonial-author">
+                        <img class="btr-testimonial-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="Nadia Ali" />
+                        <div>
+                            <div class="btr-testimonial-name">Nadia Ali</div>
+                            <div class="btr-testimonial-role">Head of Growth</div>
+                        </div>
+                    </div>
+                    <div class="btr-testimonial-quote">“</div>
+                    <p class="btr-testimonial-text">The collaboration was smooth, strategic, and outcome-focused. We saw not only technical improvements but also better performance across our customer experience journey.</p>
+                    <div class="btr-testimonial-meta">
+                        <span class="btr-testimonial-company">SummitIQ</span>
+                        <span class="btr-testimonial-stars">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="btr-testimonial-card">
+                    <div class="btr-testimonial-author">
+                        <img class="btr-testimonial-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="David Smith" />
+                        <div>
+                            <div class="btr-testimonial-name">David Smith</div>
+                            <div class="btr-testimonial-role">Founder & CEO</div>
+                        </div>
+                    </div>
+                    <div class="btr-testimonial-quote">“</div>
+                    <p class="btr-testimonial-text">BTR Solutions transformed our digital systems with precision and speed. Their team combined technical depth with an understanding of business strategy that made the whole rollout feel effortless.</p>
+                    <div class="btr-testimonial-meta">
+                        <span class="btr-testimonial-company">TechCorp</span>
+                        <span class="btr-testimonial-stars">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="btr-testimonial-card">
+                    <div class="btr-testimonial-author">
+                        <img class="btr-testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" alt="Aisha Khan" />
+                        <div>
+                            <div class="btr-testimonial-name">Aisha Khan</div>
+                            <div class="btr-testimonial-role">VP Operations</div>
+                        </div>
+                    </div>
+                    <div class="btr-testimonial-quote">“</div>
+                    <p class="btr-testimonial-text">We needed a partner who could understand enterprise complexity, and BTR delivered exactly that. Their execution quality, communication, and cloud expertise stood out from day one.</p>
+                    <div class="btr-testimonial-meta">
+                        <span class="btr-testimonial-company">NorthPeak</span>
+                        <span class="btr-testimonial-stars">★★★★★</span>
+                    </div>
+                </article>
             </div>
         </div>
     </div>
