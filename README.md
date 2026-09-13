@@ -1,7 +1,7 @@
 
-# BTR Solutions
+# Xvera Labs
 
-BTR Solutions is a Django-based corporate website designed for a technology and consulting company. The project includes the main landing page, about section, services, projects, blogs, contact page, FAQ pages, and a modular app structure for future expansion.
+Xvera Labs is a Django-based corporate website designed for a technology and consulting company. The project includes the main landing page, about section, services, projects, blogs, contact page, FAQ pages, and a modular app structure for future expansion.
 
 ## Features
 
@@ -28,7 +28,7 @@ BTR Solutions is a Django-based corporate website designed for a technology and 
 ## Project Structure
 
 ```bash
-btr_solutions/
+xveralabs/
 ├── apps/
 │   ├── about_us/
 │   ├── blogs/
