@@ -1,5 +1,5 @@
 
-# The {M N} Solutions
+# Xvera Labs
 
 A Django-based web application for managing company services, portfolio, blog, and contact system.
 
