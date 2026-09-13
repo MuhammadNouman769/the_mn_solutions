@@ -163,4 +163,3 @@ This project is a template-based Django website for a business/agency brand and 
 
 ## License
 
-This project currently does not include a formal license file. If you are publishing or sharing it publicly, add a license according to your project requirements.
