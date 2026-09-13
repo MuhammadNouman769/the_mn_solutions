@@ -68,28 +68,89 @@ xveralabs/
 - apps.utils: shared utility app
 - apps.team: team-specific logic and models
 
-## Key Routes
+## Website Pages / Routes
 
-The project includes routes such as:
+This project contains the following pages from the actual templates and URL configuration.
 
-- /
-- /about-us/company/
-- /about-us/why-choose-us/
-- /contact-us/
-- /services/
-- /projects/
-- /blogs/
-- /case-studies/
-- /faqs/
-- /terms-conditions/
-- /privacy-policy/
-- /signin/
-- /signup/
+### Home / Main Pages
+
+- / — Home page
+- /contact-us/ — Contact page
+- /services/ — Services overview
+- /projects/ — Projects overview
+- /signin/ — Sign in page
+- /signup/ — Sign up page
+- /blogs/ — Blog listing page
+- /blog-single/ — Single blog page
+- /case-studies/ — Case studies page
+- /faqs/ — FAQ page
+- /terms-conditions/ — Terms and conditions page
+- /privacy-policy/ — Privacy policy page
+- /coming-soon/ — Coming soon page
+
+### About Pages
+
+- /about-us/company/ — Company profile page
+- /about-us/about/life-at-mn-solutions/ — Life at MN Solutions page
+- /about-us/about/diversity-equity-inclusion/ — DEI page
+- /about-us/why-choose-us/ — Why choose us page
+- /about/careeer/ — Careers page
+
+### Service Pages
+
+#### Strategy & Consulting
+
+- /services/strategy-and-consulting/
+- /services/strategy_&_consulting/business-optimization-consulting/
+- /services/strategy_&_consulting/product-strategy/
+- /services/strategy_&_consulting/technology-strategy/
+- /services/strategy_&_consulting/learning-and-development/
+
+#### Advanced Technology
+
+- /services/advanced-technology/
+- /services/advanced-technology/robotic-process-automation/
+- /services/advanced-technology/internet-of-things/
+- /services/advanced-technology/blockchain/
+- /services/advanced-technology/ar-vr/
+
+#### Additional service pages
+
 - /sqa/
 - /web-development/
 - /product-development/
 - /dev-ops/
 - /staff-augmentation/
+
+### Template Files Included
+
+The project templates include pages such as:
+
+- templates/home/index.html
+- templates/home/contact-us.html
+- templates/home/services.html
+- templates/home/projects.html
+- templates/home/signin.html
+- templates/home/signup.html
+- templates/blogs/blog-grid.html
+- templates/blogs/blog-single.html
+- templates/home/case-studies.html
+- templates/faqs/faqs.html
+- templates/faqs/term_condition.html
+- templates/faqs/privacy_policy.html
+- templates/about/about.html
+- templates/about/culture.html
+- templates/about/diversity_equity_inclusion.html
+- templates/about/why-choose-us.html
+- templates/about/careers.html
+- templates/services/sqa.html
+- templates/services/web_development.html
+- templates/services/product_dev.html
+- templates/services/devops.html
+- templates/services/staff-aug.html
+- templates/services/strategy_&_consulting/*.html
+- templates/services/advanced_technology/*.html
+- templates/coming-soon.html
 
 ## Setup Instructions
 
